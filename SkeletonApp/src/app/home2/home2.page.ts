@@ -36,7 +36,7 @@ export class Home2Page implements OnInit {
   }
 
   mostrar(){
-    alert(this.texto2Original)
+    alert(this.texto1 + ' ' + this.texto2)
     this.campoSeleccionado = this.campoSeleccOriginal;
     this.texto1 = this.texto1Original;
     this.texto2 = this.texto2Original;

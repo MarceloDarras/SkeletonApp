@@ -30,8 +30,16 @@ export class LoginPage implements OnInit {
         }
       });
       alert("Bienvenido " + this.nombre);
+    }else if(this.contrasena.length<4 || this.contrasena.length>15){
+      document.getElementById("contrasena");
+      alert("La contraseña no cumple con los parametros");
     }else{
-      alert("Acceso denegado");
+      let contra = document.getElementById("contraseña")?.innerText;
+      console.log(contra);
+      
+      if (contra){
+
+      }
     }
   }
 
