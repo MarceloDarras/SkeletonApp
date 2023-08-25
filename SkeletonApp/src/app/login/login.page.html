@@ -16,17 +16,17 @@
         <ion-title>Iniciar Sesion</ion-title>
       </ion-item>
       <br>
-      <ion-card>
+      <ion-card #cardA>
         <ion-card-content>
           <ion-item lines="full">
-            <ion-input id="nombre"  [(ngModel)]="nombre" placeholder="John Doe" type="text" minlength="5" maxlength="10" required>Nombre de Usuario:</ion-input>
+            <ion-input onchange="play()" id="nombre"  [(ngModel)]="nombre" placeholder="John Doe" type="text" minlength="5" maxlength="10" required>Nombre de Usuario:</ion-input>
           </ion-item> 
         </ion-card-content>
       </ion-card>
       <ion-card>
         <ion-card-content>
           <ion-item lines="full">
-            <ion-input id="contrasena" placeholder="contraseña" errorText="Contraseña invalida" [(ngModel)]="contrasena" type="password" minlength="4" maxlength="4" required>Contraseña:</ion-input>
+            <ion-input   id="contrasena" placeholder="contraseña" errorText="Contraseña invalida" [(ngModel)]="contrasena" type="password" minlength="4" maxlength="4" required>Contraseña:</ion-input>
           </ion-item>
         </ion-card-content>
       </ion-card>
