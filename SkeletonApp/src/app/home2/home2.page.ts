@@ -36,10 +36,20 @@ export class Home2Page implements OnInit {
   }
 
   mostrar(){
-    alert(this.texto1 + ' ' + this.texto2)
-    this.campoSeleccionado = this.campoSeleccOriginal;
-    this.texto1 = this.texto1Original;
-    this.texto2 = this.texto2Original;
+    if(this.campoSeleccionado == '3'){
+      this.campoSeleccionado = 'Superior'
+    }else if(this.campoSeleccionado == '2'){
+      this.campoSeleccionado = 'Media'
+    }else if(this.campoSeleccionado == '1'){
+      this.campoSeleccionado = 'Basico'
+    }
+
+    if(this.texto1 == "" || this.texto2 == "" || this.campoSeleccionado == ""){
+      alert("Alguno de los campos está vacío")
+    }else{
+      alert("Nombre: " + this.texto1 + ' ' + this.texto2 + ' | ' + "Nivel Educacional: " + this.campoSeleccionado)
+    }
+  
   }
 
   ngOnInit() {
