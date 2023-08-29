@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
-import { NavController, AnimationController, IonCard } from '@ionic/angular';
+import { NavController, AnimationController, IonCard, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   private cardB!: Animation;
   private cardC!: Animation;
 
-  constructor(private navCtrl: NavController, private animationCtrl: AnimationController) { }
+  constructor(private navCtrl: NavController, private animationCtrl: AnimationController, private alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -33,40 +33,20 @@ export class LoginPage implements OnInit {
       .direction('alternate')
       .fromTo('background', 'white', 'Green');
     const cardB = this.animationCtrl
-        .create()
-        .addElement(this.cardElements.last.nativeElement)
-        .duration(500)
-        .beforeStyles({
-          filter: 'invert(75%)',
-        })
-        .beforeClearStyles(['box-shadow'])
-        .afterStyles({
-          'box-shadow': 'rgba(255, 0, 50, 0.4) 0px 4px 16px 6px',
-        })
-        .afterClearStyles(['filter'])
-        .keyframes([
-          { offset: 0, transform: 'scale(1)' },
-          { offset: 0.5, transform: 'scale(1.5)' },
-          { offset: 1, transform: 'scale(1)' },
-        ]);
+      .create()
+      .addElement(this.cardElements.last.nativeElement)
+      .duration(1500)
+      .iterations(1)
+      .direction('alternate')
+      .fromTo('background', 'white', 'Green');
 
     const cardC = this.animationCtrl
-        .create()
-        .addElement(this.cardElements.last.nativeElement)
-        .duration(500)
-        .beforeStyles({
-          filter: 'invert(75%)',
-        })
-        .beforeClearStyles(['box-shadow'])
-        .afterStyles({
-          'box-shadow': 'rgba(50, 255, 0, 0.4) 0px 4px 16px 6px',
-        })
-        .afterClearStyles(['filter'])
-        .keyframes([
-          { offset: 0, transform: 'scale(1)' },
-          { offset: 0.5, transform: 'scale(1.5)' },
-          { offset: 1, transform: 'scale(1)' },
-        ]);
+      .create()
+      .addElement(this.cardElements.last.nativeElement)
+      .duration(1500)
+      .iterations(1)
+      .direction('alternate')
+      .fromTo('background', 'white', 'Red');
 
       this.animation = this.animationCtrl
       .create()
@@ -84,32 +64,47 @@ export class LoginPage implements OnInit {
       .create()
       .duration(500)
       .iterations(2)
-      .addAnimation([cardB]);
+      .addAnimation([cardC]);
 
   }
 
   play() {
+    if(this.nombre != ""){
       this.animation.play();
+    }
+  
   }
 
   play2() {
-    
-    this.animation2.play();
+    if(this.contrasena.length == 4  ){
+      this.animation2.play();
+    }else{
+      this.animationExito.play();
+    }
   }
 
-  login(){
+  
+
+
+  
+
+  async login(){
+    
     if(this.nombre != "" && this.contrasena != ""){
-      this.animation.play();
-      this.animationExito.play();
       this.navCtrl.navigateForward('/home2', {
         queryParams:{
-          username: this.nombre
+           username: this.nombre
         }
       });
-      alert("Bienvenido " + this.nombre);
-    }else if(this.contrasena.length<4 || this.contrasena.length>15){
-      document.getElementById("contrasena");
-      this.animation2.play();
+      
+      const alert = await this.alertController.create({
+        header: 'Inicio Exitoso',
+        message: 'Bienvenido ' + this.nombre,
+        buttons: ['OK']
+      })
+      await alert.present();
+    }else if(this.contrasena.length<4 ){
+      
     }else{
       
     }
