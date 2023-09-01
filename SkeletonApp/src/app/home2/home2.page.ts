@@ -2,18 +2,12 @@ import { Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular
 import { ActivatedRoute } from '@angular/router';
 import type { QueryList } from '@angular/core';
 import type { Animation } from '@ionic/angular';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
 import { AlertController, AnimationController, IonCard } from '@ionic/angular';
 
 @Component({
   selector: 'app-home2',
   templateUrl: './home2.page.html',
   styleUrls: ['./home2.page.scss'],
-  standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
 })
 export class Home2Page implements OnInit {
   @ViewChildren(IonCard, { read: ElementRef }) cardElements!: QueryList<ElementRef<HTMLIonCardElement>>;

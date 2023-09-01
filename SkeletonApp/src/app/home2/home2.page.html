@@ -19,7 +19,7 @@
   <ion-card>
     <ion-card-content>
       <ion-item lines="full">
-        <ion-input (input)="play()" [(ngModel)]="texto1" placeholder="John">Nombre:</ion-input>
+        <ion-input [(ngModel)]="texto1" placeholder="John">Nombre:</ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -39,11 +39,17 @@
     </ion-select>
   </ion-item>
   <ion-item lines="full">
-    <ion-label>Fecha de nacimiento</ion-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+  </ion-item>
+  <ion-item lines="full">
+    
     <ion-button (click)="limpiar()" >Limpiar</ion-button>
 
     <ion-button color="danger" (click)="mostrar()" >Mostrar</ion-button>
@@ -52,3 +58,5 @@
  
   
 </ion-content>
+
+
