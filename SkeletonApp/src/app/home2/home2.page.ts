@@ -15,6 +15,8 @@ export class Home2Page implements OnInit {
   texto1:string="";
   texto2: string="";
 
+  selectedTab: string="";
+
   campoSeleccOriginal:string = "";
   texto1Original: string="";
   texto2Original: string="";
